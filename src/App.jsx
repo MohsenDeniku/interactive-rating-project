@@ -7,11 +7,13 @@ export default function App() {
 
   function addRate(selectedRating) {
     setRate(selectedRating);
-    console.log(rate);
   }
   function appreciation() {
     setLoadAppreciation(true)
   }
+
+  const ratings = [1, 2, 3, 4, 5];
+
   return (
     <div className="app">
       {!loadAppreciation ? (
@@ -25,23 +27,17 @@ export default function App() {
             feedback is appreciated to help us improve our offering!
           </p>
           <ul aria-label="rating numbers" className="rating-container">
-            <li onClick={() => addRate(1)} className="rating-number">
-              1
-            </li>
-            <li onClick={() => addRate(2)} className="rating-number">
-              2
-            </li>
-            <li onClick={() => addRate(3)} className="rating-number">
-              3
-            </li>
-            <li onClick={() => addRate(4)} className="rating-number">
-              4
-            </li>
-            <li onClick={() => addRate(5)} className="rating-number">
-              5
-            </li>
+            {ratings.map((num) => (
+              <li
+                key={num}
+                onClick={() => addRate(num)}
+                className={`rating-number${rate === num ? " active" : ""}`}
+              >
+                {num}
+              </li>
+            ))}
           </ul>
-          <button  onClick={appreciation}>SUBMIT</button>
+          <button onClick={appreciation}>SUBMIT</button>
         </>
       ) : (
         <div className="appreciation-container">

@@ -103,3 +103,7 @@ button:hover {
 .appreciation-main-p {
   text-align: center;
 }
+li.active {
+    background-color: #007bff;
+    color: #fff;
+  }
